@@ -1,7 +1,8 @@
 // Basic webpack configs to build or watch
-const env = process.env.NODE_ENV
-const mode = env !== 'production' ? 'development' : 'production'
-const watch = env === 'development' ? true : false
+const { isProd } = require('./../utils/enviroment')
+
+const mode = isProd ? 'production' : 'development'
+const watch = !isProd
 
 module.exports = {
   mode,

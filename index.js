@@ -1,3 +1,1 @@
-(() => {
-  console.log('initialized two')
-})
+console.log('initialized two')
