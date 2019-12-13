@@ -1,4 +1,3 @@
-const { isDev } = require('./../utils/enviroment')
 const rules = []
 
 rules.push({
@@ -8,18 +7,5 @@ rules.push({
     loader: 'babel-loader',
   },
 })
-
-if(isDev) {
-  rules.push({
-    test: /\.(html)$/,
-    use: [
-      'file-loader',
-      'extract-loader',
-      {
-        loader: "html-loader",
-      }
-    ],
-  })
-}
 
 module.exports = rules
