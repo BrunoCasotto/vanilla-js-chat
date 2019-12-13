@@ -1,7 +1,7 @@
 const path = require('path')
-const { rootPath } = require('./partials/paths')
-// const optimization = require('./partials/optimization')
 const rules = require('./partials/rules')
+const buildConfigs = require('./partials/build-configs')
+const { rootPath } = require('./partials/paths')
 
 module.exports = {
   entry: [
@@ -12,4 +12,5 @@ module.exports = {
   },
   plugins: [],
   optimization: {},
+  ...buildConfigs,
 }
