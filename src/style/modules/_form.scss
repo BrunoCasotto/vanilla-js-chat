@@ -1,0 +1,24 @@
+.vanilla-js-chat {
+  &__btn {
+    padding: 10px;
+    border: 1px solid $primary-color;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    outline: none;
+    cursor: pointer;
+
+    &:hover {
+      background: rgb(216, 213, 213);
+    }
+  }
+
+  &__input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid $primary-color;
+    margin-right: 10px;
+    letter-spacing: 1px;
+    outline: none;
+  }
+}

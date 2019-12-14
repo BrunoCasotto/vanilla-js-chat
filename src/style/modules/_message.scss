@@ -1,0 +1,42 @@
+.vanilla-js-chat {
+  &__message {
+    background: white;
+    margin-bottom: 15px;
+    border-radius: 4px;
+
+    &.right {
+      text-align: right;
+      margin-left: 25px;
+    }
+
+    &.left {
+      margin-right: 25px;
+    }
+
+    &.blue {
+      background: $blue-color;
+      .vanilla-js-chat__message__name {
+        color: $third-color;
+      }
+    }
+
+    &.green {
+      background: $green-color;
+      .vanilla-js-chat__message__name {
+        color: $primary-color;
+      }
+    }
+
+    &__name {
+      font-weight: 14px;
+      margin-bottom: 5px;
+      color: $secondary-color;
+      font-weight: bold;
+    }
+
+    &__body {
+      padding: 10px;
+      position: relative;
+    }
+  }
+}

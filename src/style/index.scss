@@ -1,4 +1,6 @@
 @import 'vars';
+@import './modules/form';
+@import './modules/message';
 
 .vanilla-js-chat {
   width: 100%;
@@ -33,69 +35,5 @@
   &__controller {
     display: flex;
     padding: 10px;
-  }
-
-  &__btn {
-    padding: 10px;
-    border: 1px solid $primary-color;
-    font-weight: bold;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    outline: none;
-    cursor: pointer;
-
-    &:hover {
-      background: rgb(216, 213, 213);
-    }
-  }
-
-  &__input {
-    flex: 1;
-    padding: 10px;
-    border: 1px solid $primary-color;
-    margin-right: 10px;
-    letter-spacing: 1px;
-    outline: none;
-  }
-
-  &__message {
-    background: white;
-    margin-bottom: 15px;
-    border-radius: 4px;
-
-    &.right {
-      text-align: right;
-      margin-left: 25px;
-    }
-
-    &.left {
-      margin-right: 25px;
-    }
-
-    &.blue {
-      background: $blue-color;
-      .vanilla-js-chat__message__name {
-        color: $third-color;
-      }
-    }
-
-    &.green {
-      background: $green-color;
-      .vanilla-js-chat__message__name {
-        color: $primary-color;
-      }
-    }
-
-    &__name {
-      font-weight: 14px;
-      margin-bottom: 5px;
-      color: $secondary-color;
-      font-weight: bold;
-    }
-
-    &__body {
-      padding: 10px;
-      position: relative;
-    }
   }
 }
