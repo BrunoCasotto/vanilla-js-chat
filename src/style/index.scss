@@ -2,28 +2,37 @@
 
 .vanilla-js-chat {
   width: 100%;
-  padding: 20px;
-  border: 1px solid $primary-color;
+  border: 1px solid $secondary-color;
   border-radius: 4px;
 
   &__title {
     font-size: 16px;
+    color: $primary-color;
   }
 
   &__header {
     width: 100%;
     margin-bottom: 5px;
+    padding: 10px;
+    box-shadow: 0 1px 6px 0 $primary-color;
   }
 
   &__body {
+    max-height: 400px;
+    overflow-y: scroll;
     padding: 5px;
-    border: 1px solid $primary-color;
     margin-bottom: 5px;
     min-height: 80px;
+    -ms-overflow-style: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
   }
 
   &__controller {
     display: flex;
+    padding: 10px;
   }
 
   &__btn {
@@ -47,5 +56,46 @@
     margin-right: 10px;
     letter-spacing: 1px;
     outline: none;
+  }
+
+  &__message {
+    background: white;
+    margin-bottom: 15px;
+    border-radius: 4px;
+
+    &.right {
+      text-align: right;
+      margin-left: 25px;
+    }
+
+    &.left {
+      margin-right: 25px;
+    }
+
+    &.blue {
+      background: $blue-color;
+      .vanilla-js-chat__message__name {
+        color: $third-color;
+      }
+    }
+
+    &.green {
+      background: $green-color;
+      .vanilla-js-chat__message__name {
+        color: $primary-color;
+      }
+    }
+
+    &__name {
+      font-weight: 14px;
+      margin-bottom: 5px;
+      color: $secondary-color;
+      font-weight: bold;
+    }
+
+    &__body {
+      padding: 10px;
+      position: relative;
+    }
   }
 }

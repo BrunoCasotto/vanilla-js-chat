@@ -12,11 +12,82 @@ export const headerVdom = {
   }]
 }
 
+const messageVdom = {
+  type: 'div',
+  props: {
+    class: 'vanilla-js-chat__message right green'
+  },
+  children: [
+    {
+      type: 'div',
+      props: {
+        class: 'vanilla-js-chat__message__body'
+      },
+      children: [
+        {
+          type: 'p',
+          props: {
+            class: 'vanilla-js-chat__message__name',
+            textContent: 'Bruno Casotto'
+          },
+        },
+        {
+          type: 'p',
+          props: {
+            class: 'vanilla-js-chat__message__text',
+            textContent: 'E simplesmente uma simulação de texto da indústria tipográfica.'
+          },
+        }
+      ]
+    },
+  ]
+}
+
+const leftMessageVdom = {
+  type: 'div',
+  props: {
+    class: 'vanilla-js-chat__message left blue'
+  },
+  children: [
+    {
+      type: 'div',
+      props: {
+        class: 'vanilla-js-chat__message__body'
+      },
+      children: [
+        {
+          type: 'p',
+          props: {
+            class: 'vanilla-js-chat__message__name',
+            textContent: 'Bruno Casotto'
+          },
+        },
+        {
+          type: 'p',
+          props: {
+            class: 'vanilla-js-chat__message__text',
+            textContent: 'E simplesmente uma simulação de texto da indústria tipográfica.'
+          },
+        }
+      ]
+    },
+  ]
+}
+
 export const bodyVdom = {
   type: 'div',
   props: {
     class: 'vanilla-js-chat__body'
   },
+  children: [
+    messageVdom,
+    leftMessageVdom,
+    messageVdom,
+    messageVdom,
+    messageVdom,
+    leftMessageVdom,
+    leftMessageVdom,
+  ]
 }
 
 export const controllerVdom = {
