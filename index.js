@@ -25,6 +25,11 @@ const VanillaJsChat = () => {
     chatInstances.wrappwe = null
   }
 
+  const scrollChatToBottom = () => {
+    const { scrollHeight } = chatInstances.body
+    chatInstances.body.scrollTop = scrollHeight
+  }
+
   /**
    * Main method to initialize render and chat listeners
   */
@@ -62,6 +67,8 @@ const VanillaJsChat = () => {
 
     const messageInstance = DomHandler.renderElement(messageVdom)
     DomHandler.insertMessage(chatInstances.body, messageInstance)
+
+    scrollChatToBottom()
   }
 
   const onSend = () => {
