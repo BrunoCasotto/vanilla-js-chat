@@ -4,10 +4,11 @@ import { chatVdom } from './src/vdoms'
 /**
  * Main method to initialize render and chat listeners
  */
-const init = () => {
-  const chatTarget = document.querySelector('#vanilla-js-chat')
+const init = (id) => {
+  const wrapperId = id || 'vanilla-js-chat'
+  const chatTarget = document.querySelector(`#${wrapperId}`)
+
   DomHandler.render(chatTarget, chatVdom)
-  // code
 }
 
 const restart = () => {
