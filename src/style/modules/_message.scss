@@ -15,23 +15,34 @@
 
     &.blue {
       background: $blue-color;
-      .vanilla-js-chat__message__name {
-        color: $third-color;
-      }
+      box-shadow: 0 1px 6px 0 $blue-color;
     }
 
     &.green {
       background: $green-color;
-      .vanilla-js-chat__message__name {
-        color: $primary-color;
-      }
+      box-shadow: 0 1px 6px 0 $green-color;
+    }
+
+    &.red {
+      background: $red-color;
+      box-shadow: 0 1px 6px 0 $red-color;
+    }
+
+    &.yellow   {
+      background: $yellow-color;
+      box-shadow: 0 1px 6px 0 $yellow-color;
     }
 
     &__name {
+      font-size: $font-size-sm;
       font-weight: 14px;
-      margin-bottom: 5px;
-      color: $secondary-color;
       font-weight: bold;
+      margin-bottom: 5px;
+      color: $primary-color;
+    }
+
+    &__text {
+      font-size: $font-size-md;
     }
 
     &__body {

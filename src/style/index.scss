@@ -8,6 +8,8 @@
   border-radius: 4px;
 
   &__title {
+    text-align: center;
+    letter-spacing: 1px;
     font-size: 16px;
     color: $primary-color;
   }
@@ -16,7 +18,7 @@
     width: 100%;
     margin-bottom: 5px;
     padding: 10px;
-    box-shadow: 0 1px 6px 0 $primary-color;
+    box-shadow: 0px 2px 3px -1px $secondary-color;
   }
 
   &__body {
