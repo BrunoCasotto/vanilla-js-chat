@@ -8,7 +8,7 @@ entry.push(path.join(rootPath, 'index.js'))
 entry.push(path.join(stylePath, 'index.scss'))
 
 if(isDev) {
-  entry.push(path.join(stylePath, 'base.scss'))
+  entry.push(path.join(stylePath, 'example.scss'))
 }
 
 module.exports = entry
