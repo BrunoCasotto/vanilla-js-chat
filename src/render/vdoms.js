@@ -1,4 +1,4 @@
-const headerVdom = {
+export const headerVdom = {
   type: 'div',
   props: {
     class: 'vanilla-js-chat__header'
@@ -12,14 +12,14 @@ const headerVdom = {
   }]
 }
 
-const bodyVdom = {
+export const bodyVdom = {
   type: 'div',
   props: {
     class: 'vanilla-js-chat__body'
   },
 }
 
-const controllerVdom = {
+export const controllerVdom = {
   type: 'div',
   props: {
     class: 'vanilla-js-chat__controller'
@@ -50,10 +50,5 @@ export const chatVdom = {
   type: 'div',
   props: {
     class: 'vanilla-js-chat'
-  },
-  children: [
-    headerVdom,
-    bodyVdom,
-    controllerVdom,
-  ]
+  }
 }

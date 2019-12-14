@@ -1,15 +1,27 @@
 import DomHandler from './src/render/dom-handler'
-import { chatVdom } from './src/render/vdoms'
+import { headerVdom, bodyVdom, controllerVdom, chatVdom } from './src/render/vdoms'
 
 const VanillaJsChat = () => {
+  let chatInstances = {
+    chat: null,
+    header: null,
+    body: null,
+    controller: null,
+  }
+
   /**
    * Main method to initialize render and chat listeners
   */
   const init = (id) => {
     const wrapperId = id || 'vanilla-js-chat'
-    const chatTarget = document.querySelector(`#${wrapperId}`)
+    const wrapper = document.querySelector(`#${wrapperId}`)
 
-    DomHandler.render(chatTarget, chatVdom)
+    chatInstances.chat = DomHandler.renderElement(chatVdom),
+    chatInstances.header = DomHandler.renderElement(headerVdom),
+    chatInstances.body = DomHandler.renderElement(bodyVdom),
+    chatInstances.controller = DomHandler.renderElement(controllerVdom),
+
+    DomHandler.render({ wrapper, ...chatInstances })
   }
 
   const restart = () => {
