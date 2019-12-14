@@ -1,20 +1,22 @@
 
+const DomCore = () => {
+
   /**
    * method to filter the attributes from props
    */
-  export const getAttributesFromProps = (props) => {
+  const getAttributesFromProps = (props) => {
     const filterAtt = key => key !== 'textContent'
     return Object.keys(props).filter(filterAtt)
   }
 
-  export const setAttribute = (props, element) => {
+  const setAttribute = (props, element) => {
     return (att) => element.setAttribute(att, props[att])
   }
 
   /**
    * method to add the attributes to element
    */
-  export const addEventAndAttributes = (element, props) => {
+  const addEventAndAttributes = (element, props) => {
     const attributes = getAttributesFromProps(props)
 
     attributes.forEach(setAttribute(props, element))
@@ -27,7 +29,7 @@
   /**
    * method to create an element from vdom node object
    */
-  export const createElement = (vdom) => {
+  const createElement = (vdom) => {
     const { type, props } = Object.assign({}, vdom)
 
     const element = document.createElement(type)
@@ -36,3 +38,10 @@
 
     return element
   }
+
+  return {
+    createElement,
+  }
+}
+
+export default new DomCore()
