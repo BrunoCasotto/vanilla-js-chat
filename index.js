@@ -28,7 +28,7 @@ const VanillaJsChat = () => {
     // code
   }
 
-  const sendMessage = () => {
+  const addMessage = () => {
     // code
   }
 
@@ -43,7 +43,7 @@ const VanillaJsChat = () => {
   return {
     init,
     restart,
-    sendMessage,
+    addMessage,
     onSend,
     onClose,
   }
