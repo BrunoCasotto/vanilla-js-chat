@@ -74,6 +74,37 @@ const leftMessageVdom = {
   ]
 }
 
+export const createMessageVdom = ({ name, message, color, side }) => ({
+  type: 'div',
+  props: {
+    class: `vanilla-js-chat__message ${side} ${color}`
+  },
+  children: [
+    {
+      type: 'div',
+      props: {
+        class: 'vanilla-js-chat__message__body'
+      },
+      children: [
+        {
+          type: 'p',
+          props: {
+            class: 'vanilla-js-chat__message__name',
+            textContent: name
+          },
+        },
+        {
+          type: 'p',
+          props: {
+            class: 'vanilla-js-chat__message__text',
+            textContent: message
+          },
+        }
+      ]
+    },
+  ]
+})
+
 export const bodyVdom = {
   type: 'div',
   props: {

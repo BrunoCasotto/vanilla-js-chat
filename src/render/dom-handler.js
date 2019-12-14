@@ -32,9 +32,14 @@ const DomHandler = () => {
     wrapper.appendChild(chat)
   }
 
+  const insertMessage = (bodyElement, messageElement) => {
+    bodyElement.insertBefore(messageElement, null)
+  }
+
   return {
     render,
     renderElement,
+    insertMessage,
   }
 }
 
