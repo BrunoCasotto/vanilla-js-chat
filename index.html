@@ -12,7 +12,16 @@
 
   <script>
     window.onload = function() {
+      //initilize
       window.VanillaJsChat.init()
+
+      //method callback
+      function sendMessage (response) {
+        VanillaJsChat.addMessage('Bruno Casotto', response.message, 'green', 'right')
+      }
+
+      //register callback
+      VanillaJsChat.onSendMessage(sendMessage)
     }
   </script>
 </body>

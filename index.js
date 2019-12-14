@@ -9,6 +9,7 @@ import {
 } from './src/render/vdoms'
 
 const VanillaJsChat = () => {
+  //@private
   let chatInstances = {
     chat: null,
     header: null,
@@ -17,6 +18,10 @@ const VanillaJsChat = () => {
     wrappwe: null
   }
 
+  //@private
+  let onSendMessageCallbacks = []
+
+  //@private
   const destroyInstances = () => {
     chatInstances.chat = null
     chatInstances.header = null
@@ -25,9 +30,30 @@ const VanillaJsChat = () => {
     chatInstances.wrappwe = null
   }
 
+  //@private
+  const executeSendMessageCallbacks = message => {
+    onSendMessageCallbacks.forEach(callback => callback({ message }))
+  }
+
+  //@private
   const scrollChatToBottom = () => {
     const { scrollHeight } = chatInstances.body
     chatInstances.body.scrollTop = scrollHeight
+  }
+
+  //@private
+  const addMessageEventListener = (buttonElement, inputElement) => {
+    buttonElement.addEventListener('click', () => {
+      executeSendMessageCallbacks(inputElement.value)
+      inputElement.value = ''
+    })
+
+    inputElement.addEventListener('keypress', ({ key, target }) => {
+      if (key === 'Enter') {
+        executeSendMessageCallbacks(target.value)
+        inputElement.value = ''
+      }
+    })
   }
 
   /**
@@ -44,6 +70,11 @@ const VanillaJsChat = () => {
     chatInstances.wrapper = wrapper
 
     DomHandler.render({ wrapper, ...chatInstances })
+
+    const inputElement = chatInstances.controller.querySelector('#vanilla-js-message'),
+      buttonElement = chatInstances.controller.querySelector('#vanilla-js-button')
+
+    addMessageEventListener(buttonElement, inputElement)
   }
 
   const restart = () => {
@@ -71,8 +102,8 @@ const VanillaJsChat = () => {
     scrollChatToBottom()
   }
 
-  const onSend = () => {
-    // code
+  const onSendMessage = calback => {
+    onSendMessageCallbacks.push(calback)
   }
 
   const onClose = () => {
@@ -83,7 +114,7 @@ const VanillaJsChat = () => {
     init,
     restart,
     addMessage,
-    onSend,
+    onSendMessage,
     onClose,
   }
 }
