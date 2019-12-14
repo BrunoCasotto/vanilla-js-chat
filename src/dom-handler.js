@@ -1,21 +1,14 @@
 import { createElement } from './dom-core'
 
-const chatVdom = {
-  type: 'div',
-  props: {
-    class: 'vanilla-js-chat'
-  },
-  children: [{
-    type: 'h1',
-    props: {
-      class: 'vanilla-js-chat__title',
-      textContent: 'Conversa'
-    },
-  }]
-}
+const render = (wrapper, vdom) => {
+  const createdElement = createElement(vdom)
+  const { children } = vdom
 
-const render = (wrapper) => {
-  wrapper.appendChild(createElement(chatVdom))
+  if(children) {
+    children.forEach( child => render(createdElement, child))
+  }
+
+  wrapper.appendChild(createdElement)
 }
 
 const DomHandler = {
