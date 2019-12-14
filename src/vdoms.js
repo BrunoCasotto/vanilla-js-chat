@@ -26,8 +26,19 @@ const controllerVdom = {
   },
   children: [
     {
+      type: 'input',
+      props: {
+        id: 'vanilla-js-message',
+        name: 'message',
+        class: 'vanilla-js-chat__input',
+        textContent: 'enviar'
+      },
+    },
+    {
       type: 'button',
       props: {
+        name: 'button',
+        id: 'vanilla-js-button',
         class: 'vanilla-js-chat__btn',
         textContent: 'enviar'
       },
