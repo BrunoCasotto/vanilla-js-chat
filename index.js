@@ -1,5 +1,5 @@
-import DomHandler from './src/dom-handler'
-import { chatVdom } from './src/vdoms'
+import DomHandler from './src/render/dom-handler'
+import { chatVdom } from './src/render/vdoms'
 
 /**
  * Main method to initialize render and chat listeners
