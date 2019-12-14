@@ -15,7 +15,7 @@ const VanillaJsChat = () => {
     header: null,
     body: null,
     controller: null,
-    wrappwe: null
+    wrapper: null
   }
 
   //@private
@@ -27,12 +27,21 @@ const VanillaJsChat = () => {
     chatInstances.header = null
     chatInstances.body = null
     chatInstances.controller = null
-    chatInstances.wrappwe = null
+    chatInstances.wrapper = null
+  }
+
+  //@private
+  const removeHtmlElements = () => {
+    chatInstances.wrapper.removeChild(
+      chatInstances.wrapper.firstChild
+    )
   }
 
   //@private
   const executeSendMessageCallbacks = message => {
-    onSendMessageCallbacks.forEach(callback => callback({ message }))
+    if(message.length > 0) {
+      onSendMessageCallbacks.forEach(callback => callback({ message }))
+    }
   }
 
   //@private
@@ -60,6 +69,10 @@ const VanillaJsChat = () => {
    * Main method to initialize render and chat listeners
   */
   const init = (id) => {
+    if(chatInstances.wrapper) {
+      close()
+    }
+
     const wrapperId = id || 'vanilla-js-chat'
     const wrapper = document.querySelector(`#${wrapperId}`)
 
@@ -78,7 +91,11 @@ const VanillaJsChat = () => {
   }
 
   const restart = () => {
-    // code
+    if(chatInstances.wrapper) {
+      close()
+    }
+
+    init()
   }
 
   /**
@@ -106,8 +123,12 @@ const VanillaJsChat = () => {
     onSendMessageCallbacks.push(calback)
   }
 
-  const onClose = () => {
-    // code
+  /**
+   * Method to close chat and remove instances
+   */
+  const close = () => {
+    removeHtmlElements()
+    destroyInstances()
   }
 
   return {
@@ -115,7 +136,7 @@ const VanillaJsChat = () => {
     restart,
     addMessage,
     onSendMessage,
-    onClose,
+    close,
   }
 }
 
