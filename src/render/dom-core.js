@@ -30,7 +30,7 @@ const DomCore = () => {
    * method to create an element from vdom node object
    */
   const createElement = (vdom) => {
-    const { type, props } = Object.assign({}, vdom)
+    const { type, props } = vdom
 
     const element = document.createElement(type)
 
