@@ -1,6 +1,6 @@
 {
   "name": "vanilla-js-chat",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A tiny html chat using pure Javascript.",
   "main": "dist/vanillaJsChat.js",
   "module": "dist/vanillaJsChat.js",
