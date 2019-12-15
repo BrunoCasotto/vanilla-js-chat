@@ -5,13 +5,24 @@ const entry = require('./partials/entry')
 const devServer = require('./partials/dev-server')
 const output = require('./partials/output')
 
-module.exports = {
+const configs = [
+  {
+    libraryTarget: 'umd',
+    filename: 'vanillaJsChat.js'
+  },
+  {
+    libraryTarget: 'window',
+    filename: 'vanillaJsChat.min.js',
+  }
+]
+
+module.exports = configs.map( config => ({
   entry,
-  output,
+  output: output(config),
   module: {
     rules,
   },
   plugins,
   devServer,
   ...buildConfigs,
-}
+}))
