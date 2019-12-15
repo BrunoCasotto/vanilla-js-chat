@@ -6,5 +6,5 @@ module.exports = {
   path: path.join(rootPath, 'dist'),
   publicPath: 'dist',
   library: 'VanillaJsChat',
-  libraryTarget: 'umd'
+  libraryTarget: 'window'
 }

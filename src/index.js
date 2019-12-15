@@ -141,4 +141,4 @@ const VanillaJsChat = () => {
   }
 }
 
-export default new VanillaJsChat()
+ module.exports = new VanillaJsChat()
