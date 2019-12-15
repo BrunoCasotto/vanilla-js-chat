@@ -4,5 +4,7 @@ const { rootPath } = require('./../utils/paths')
 module.exports = {
   filename: 'bundle.js',
   path: path.join(rootPath, 'dist'),
-  publicPath: 'dist'
+  publicPath: 'dist',
+  library: 'VanillaJsChat',
+  libraryTarget: 'umd'
 }

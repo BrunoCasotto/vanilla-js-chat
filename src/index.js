@@ -1,3 +1,4 @@
+import './style/index.scss'
 import DomHandler from './render/dom-handler'
 
 import {
@@ -140,4 +141,4 @@ const VanillaJsChat = () => {
   }
 }
 
-export default VanillaJsChat
+export default new VanillaJsChat()
