@@ -3,7 +3,7 @@ const { isProd, isDev } = require('./../utils/enviroment')
 
 const mode = isProd ? 'production' : 'development'
 const watch = isDev
-const devTool = isDev ? 'source-map' : 'hidden-source-map'
+const devtool = isDev ? 'source-map' : 'hidden-source-map'
 
 module.exports = {
   mode,

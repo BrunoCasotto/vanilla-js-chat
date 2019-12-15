@@ -2,7 +2,7 @@
   "name": "vanilla-js-chat",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
     "watch": "cross-env NODE_ENV=development webpack --config ./webpack/config.js",
     "start": "cross-env NODE_ENV=development webpack-dev-server --config ./webpack/config.js"

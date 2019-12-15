@@ -4,7 +4,7 @@ const { rootPath, stylePath } = require('./../utils/paths')
 
 const entry = []
 
-entry.push(path.join(rootPath, 'index.js'))
+entry.push(path.join(rootPath, 'src', 'index.js'))
 entry.push(path.join(stylePath, 'index.scss'))
 
 if(isDev) {

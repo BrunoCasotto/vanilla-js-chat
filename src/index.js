@@ -1,4 +1,4 @@
-import DomHandler from './src/render/dom-handler'
+import DomHandler from './render/dom-handler'
 
 import {
   headerVdom,
@@ -6,7 +6,7 @@ import {
   controllerVdom,
   chatVdom,
   createMessageVdom,
-} from './src/render/vdoms'
+} from './render/vdoms'
 
 const VanillaJsChat = () => {
   //@private
@@ -140,4 +140,4 @@ const VanillaJsChat = () => {
   }
 }
 
-window.VanillaJsChat = new VanillaJsChat()
+export default VanillaJsChat
