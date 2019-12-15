@@ -10,7 +10,7 @@
   },
   "scripts": {
     "watch": "cross-env NODE_ENV=development webpack --config ./webpack/config.js",
-    "build": "cross-env NODE_ENV=production webpack --config ./webpack/config.js",
+    "build": "cross-env NODE_ENV=production webpack -p --config ./webpack/config.js",
     "start": "cross-env NODE_ENV=development webpack-dev-server --config ./webpack/config.js"
   },
   "author": "",
