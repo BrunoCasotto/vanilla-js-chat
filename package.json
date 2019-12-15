@@ -11,7 +11,7 @@
     "start": "cross-env NODE_ENV=development webpack-dev-server --config ./webpack/config.js"
   },
   "files": [
-    "./dist"
+    "dist/*"
   ],
   "author": "Bruno Casotto",
   "license": "ISC",
@@ -33,5 +33,8 @@
     "webpack": "^4.41.2",
     "webpack-cli": "^3.3.10",
     "webpack-dev-server": "^3.9.0"
+  },
+  "dependencies": {
+    "vanilla-js-chat": "^1.0.1"
   }
 }
