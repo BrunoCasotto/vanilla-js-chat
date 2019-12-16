@@ -35,13 +35,29 @@
 
   <script>
     window.onload = function() {
+      var senderColor = 'green',
+        senderName = 'Bruno Casotto',
+        senderSideMessage = 'right',
+        recipientColor = 'blue',
+        recipientSideMessage = 'left',
+        recipientName = 'John Wick'
+
       //initilize
       window.VanillaJsChat.init()
 
+      function createResponse (message) {
+        VanillaJsChat.addMessage(recipientName, message, recipientColor, recipientSideMessage)
+      }
+
       //method callback
       function sendMessage (response) {
-        VanillaJsChat.addMessage('Bruno Casotto', response.message, 'green', 'right')
+        VanillaJsChat.addMessage(senderName, response.message, senderColor, senderSideMessage)
+
+        setTimeout(function() {
+          createResponse(response.message)
+        }, 500)
       }
+
 
       //register callback
       VanillaJsChat.onSendMessage(sendMessage)
