@@ -1,6 +1,9 @@
 import './style/index.scss'
 import DomHandler from './render/dom-handler'
-import { throwWrapperIdError } from './error-handler'
+import {
+  throwWrapperIdError,
+  throwWrapperMessageError
+} from './error-handler'
 
 import {
   headerVdom,
@@ -74,7 +77,9 @@ const VanillaJsChat = () => {
     const wrapperId = id || 'vanilla-js-chat'
     const wrapper = document.querySelector(`#${wrapperId}`)
 
-    if (!wrapperId || !wrapper) throwWrapperIdError()
+    if (!wrapperId || !wrapper) {
+      return throwWrapperIdError()
+    }
 
     chatInstances.chat = DomHandler.renderElement(chatVdom),
     chatInstances.header = DomHandler.renderElement(headerVdom),
@@ -106,6 +111,10 @@ const VanillaJsChat = () => {
    * @param {string} side - string contains message side [right or left]
    */
   const addMessage = (name, message, color, side) => {
+    if(!name || !name.length > 0 || !message || !message.length > 0) {
+      return throwWrapperMessageError()
+    }
+
     const messageVdom = createMessageVdom({
       name,
       message,
