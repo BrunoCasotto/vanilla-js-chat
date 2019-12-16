@@ -1,5 +1,6 @@
 import './style/index.scss'
 import DomHandler from './render/dom-handler'
+import { throwWrapperIdError } from './error-handler'
 
 import {
   headerVdom,
@@ -70,12 +71,10 @@ const VanillaJsChat = () => {
    * Main method to initialize render and chat listeners
   */
   const init = (id) => {
-    if(chatInstances.wrapper) {
-      close()
-    }
-
     const wrapperId = id || 'vanilla-js-chat'
     const wrapper = document.querySelector(`#${wrapperId}`)
+
+    if (!wrapperId || !wrapper) throwWrapperIdError()
 
     chatInstances.chat = DomHandler.renderElement(chatVdom),
     chatInstances.header = DomHandler.renderElement(headerVdom),
