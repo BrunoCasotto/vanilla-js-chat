@@ -15,7 +15,7 @@ import {
 
 const VanillaJsChat = () => {
   //Private
-  let chatInstances = {
+  const chatInstances = {
     chat: null,
     header: null,
     body: null,
@@ -24,7 +24,7 @@ const VanillaJsChat = () => {
   }
 
   //Private
-  let onSendMessageCallbacks = []
+  const onSendMessageCallbacks = []
 
   //Private
   const destroyInstances = () => {
