@@ -6,9 +6,16 @@ Um projeto com desenvolvido em javascript puro que introduz em uma página web u
 
 
 ## Implementando o chat
-Instalação
+Instalação:
 
 ``` npm i --save vanilla-js-chat ```
+
+OU
+
+```
+<link href="https://unpkg.com/vanilla-js-chat@latest/dist/vanillaJsChat.css" rel="stylesheet" >
+<script src="https://unpkg.com/browse/vanilla-js-chat@latest/dist/vanillaJsChat.min.js" />
+```
 
 Implementação básica do projeto.
 
@@ -19,8 +26,8 @@ import VanillaJsChat from 'vanilla-js-chat'
 VanillaJsChat.init()
 ```
 
-## Capturando mensagens enviadas pelo usuario
-Os parâmetros que o metodo `onSendMessage` recebem são:
+## Enviar mensagem
+Os parâmetros que o metodo `addMessage` recebem são:
 
 `name` - Nome do usuário que envia a mensagem
 
@@ -30,10 +37,27 @@ Os parâmetros que o metodo `onSendMessage` recebem são:
 
 `side` - O lado que a mensagem sera alinhada [right, left]
 
+```VanillaJsChat.addMessage('John Doe', 'I`m baba yaga', 'red', 'right')```
+
+## Capturando mensagens enviadas pelo usuario
+O método `onSendMessage` recebe uma callback como parametro, toda vez que o usuário enviar uma mensagem essa callback será chamada. Podem ser inseridas quantas callbacks forem necessárias.
 ```
-  const receiveMessage = ({ message }) => {
-    VanillaJsChat.addMessage('John Doe', message, 'green', 'right')
+  const storageMessage = ({ message }) => {
+    database.save(message)
+  }
+  
+  const replyMessage = ({ message }) => {
+    const responseMessage = handleMessage(message)
+    
+    ```VanillaJsChat.addMessage('John Doe', responseMessage, 'red', 'right')```
   }
 
-  VanillaJsChat.onSendMessage(receiveMessage)
+  VanillaJsChat.onSendMessage(storageMessage) // first callback
+  VanillaJsChat.onSendMessage(replyMessage) // second callback
 ````
+
+## Fechar o chat e remover a instancia
+```VanillaJsChat.close()```
+
+## Reiniciar o chat
+```VanillaJsChat.restart()```
