@@ -14,7 +14,7 @@ import {
 } from './render/vdoms'
 
 const VanillaJsChat = () => {
-  //@private
+  //Private
   let chatInstances = {
     chat: null,
     header: null,
@@ -23,10 +23,10 @@ const VanillaJsChat = () => {
     wrapper: null
   }
 
-  //@private
+  //Private
   let onSendMessageCallbacks = []
 
-  //@private
+  //Private
   const destroyInstances = () => {
     chatInstances.chat = null
     chatInstances.header = null
@@ -35,27 +35,29 @@ const VanillaJsChat = () => {
     chatInstances.wrapper = null
   }
 
-  //@private
+  const isInstance = () => !!chatInstances.chat
+
+  //Private
   const removeHtmlElements = () => {
     chatInstances.wrapper.removeChild(
       chatInstances.wrapper.firstChild
     )
   }
 
-  //@private
+  //Private
   const executeSendMessageCallbacks = message => {
     if(message.length > 0) {
       onSendMessageCallbacks.forEach(callback => callback({ message }))
     }
   }
 
-  //@private
+  //Private
   const scrollChatToBottom = () => {
     const { scrollHeight } = chatInstances.body
     chatInstances.body.scrollTop = scrollHeight
   }
 
-  //@private
+  //Private
   const addMessageEventListener = (buttonElement, inputElement) => {
     buttonElement.addEventListener('click', () => {
       executeSendMessageCallbacks(inputElement.value)
@@ -96,7 +98,7 @@ const VanillaJsChat = () => {
   }
 
   const restart = () => {
-    if(chatInstances.wrapper) {
+    if(isInstance()) {
       close()
     }
 
@@ -115,6 +117,14 @@ const VanillaJsChat = () => {
       return throwWrapperMessageError()
     }
 
+    if(!color || typeof  color !== 'string') {
+      return throwWrapperColorError()
+    }
+
+    if(side !== 'right' && side !== 'left') {
+      return throwWrapperSideError()
+    }
+
     const messageVdom = createMessageVdom({
       name,
       message,
@@ -128,16 +138,22 @@ const VanillaJsChat = () => {
     scrollChatToBottom()
   }
 
-  const onSendMessage = calback => {
-    onSendMessageCallbacks.push(calback)
+  const onSendMessage = callback => {
+    if(!callback || typeof callback !== 'function') {
+      return throwOnSendMessageCallbackError()
+    }
+
+    onSendMessageCallbacks.push(callback)
   }
 
   /**
    * Method to close chat and remove instances
    */
   const close = () => {
-    removeHtmlElements()
-    destroyInstances()
+    if(isInstance()) {
+      removeHtmlElements()
+      destroyInstances()
+    }
   }
 
   return {
