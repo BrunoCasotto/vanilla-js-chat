@@ -49,7 +49,7 @@ O método `onSendMessage` recebe uma callback como parametro, toda vez que o usu
   const replyMessage = ({ message }) => {
     const responseMessage = handleMessage(message)
     
-    ```VanillaJsChat.addMessage('John Doe', responseMessage, 'red', 'right')```
+    VanillaJsChat.addMessage('John Doe', responseMessage, 'red', 'right')
   }
 
   VanillaJsChat.onSendMessage(storageMessage) // first callback
