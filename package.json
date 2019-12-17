@@ -13,6 +13,16 @@
   "files": [
     "dist/*"
   ],
+  "keywords": [
+    "chat",
+    "vanilla",
+    "javascript",
+    "pure"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BrunoCasotto/vanilla-js-chat"
+  },
   "author": "Bruno Casotto",
   "license": "ISC",
   "devDependencies": {
