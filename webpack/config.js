@@ -7,7 +7,7 @@ const output = require('./partials/output')
 
 const configs = [
   {
-    libraryTarget: 'umd',
+    libraryTarget: 'commonjs2',
     filename: 'vanillaJsChat.js'
   },
   {
