@@ -13,60 +13,63 @@ import {
   createMessageVdom,
 } from './render/vdoms'
 
-const VanillaJsChat = () => {
-  //Private
-  const chatInstances = {
-    chat: null,
-    header: null,
-    body: null,
-    controller: null,
-    wrapper: null
+class VanillaJsChatCore {
+
+  constructor() {
+    this.chatInstances = {
+      chat: null,
+      header: null,
+      body: null,
+      controller: null,
+      wrapper: null
+    }
+    this.onSendMessageCallbacks = []
+
   }
 
   //Private
-  const onSendMessageCallbacks = []
-
-  //Private
-  const destroyInstances = () => {
-    chatInstances.chat = null
-    chatInstances.header = null
-    chatInstances.body = null
-    chatInstances.controller = null
-    chatInstances.wrapper = null
+  destroyInstances () {
+    this.chatInstances.chat = null
+    this.chatInstances.header = null
+    this.chatInstances.body = null
+    this.chatInstances.controller = null
+    this.chatInstances.wrapper = null
   }
 
-  const isInstance = () => !!chatInstances.chat
+  isInstance() {
+    return !!this.chatInstances.chat
+  }
 
   //Private
-  const removeHtmlElements = () => {
-    chatInstances.wrapper.removeChild(
-      chatInstances.wrapper.firstChild
+  removeHtmlElements () {
+    this.chatInstances.wrapper.removeChild(
+      this.chatInstances.wrapper.firstChild
     )
   }
 
   //Private
-  const executeSendMessageCallbacks = message => {
+  executeSendMessageCallbacks (message) {
     if(message.length > 0) {
-      onSendMessageCallbacks.forEach(callback => callback({ message }))
+      this.onSendMessageCallbacks.forEach(callback => callback({ message }))
     }
   }
 
   //Private
-  const scrollChatToBottom = () => {
-    const { scrollHeight } = chatInstances.body
-    chatInstances.body.scrollTop = scrollHeight
+  scrollChatToBottom () {
+    const { scrollHeight } = this.chatInstances.body
+    this.chatInstances.body.scrollTop = scrollHeight
   }
 
   //Private
-  const addMessageEventListener = (buttonElement, inputElement) => {
+  addMessageEventListener (buttonElement, inputElement) {
     buttonElement.addEventListener('click', () => {
-      executeSendMessageCallbacks(inputElement.value)
+      this.executeSendMessageCallbacks(inputElement.value)
       inputElement.value = ''
     })
 
     inputElement.addEventListener('keypress', ({ key, target }) => {
       if (key === 'Enter') {
-        executeSendMessageCallbacks(target.value)
+        this.executeSendMessageCallbacks(target.value)
         inputElement.value = ''
       }
     })
@@ -75,7 +78,7 @@ const VanillaJsChat = () => {
   /**
    * Main method to initialize render and chat listeners
   */
-  const init = (id) => {
+  init (id) {
     const wrapperId = id || 'vanilla-js-chat'
     const wrapper = document.querySelector(`#${wrapperId}`)
 
@@ -83,26 +86,26 @@ const VanillaJsChat = () => {
       return throwWrapperIdError()
     }
 
-    chatInstances.chat = DomHandler.renderElement(chatVdom),
-    chatInstances.header = DomHandler.renderElement(headerVdom),
-    chatInstances.body = DomHandler.renderElement(bodyVdom),
-    chatInstances.controller = DomHandler.renderElement(controllerVdom),
-    chatInstances.wrapper = wrapper
+    this.chatInstances.chat = DomHandler.renderElement(chatVdom),
+    this.chatInstances.header = DomHandler.renderElement(headerVdom),
+    this.chatInstances.body = DomHandler.renderElement(bodyVdom),
+    this.chatInstances.controller = DomHandler.renderElement(controllerVdom),
+    this.chatInstances.wrapper = wrapper
 
-    DomHandler.render({ wrapper, ...chatInstances })
+    DomHandler.render({ wrapper, ...this.chatInstances })
 
-    const inputElement = chatInstances.controller.querySelector('#vanilla-js-message'),
-      buttonElement = chatInstances.controller.querySelector('#vanilla-js-button')
+    const inputElement = this.chatInstances.controller.querySelector('#vanilla-js-message'),
+      buttonElement = this.chatInstances.controller.querySelector('#vanilla-js-button')
 
-    addMessageEventListener(buttonElement, inputElement)
+    this.addMessageEventListener(buttonElement, inputElement)
   }
 
-  const restart = () => {
-    if(isInstance()) {
-      close()
+  restart () {
+    if(this.isInstance()) {
+      this.close()
     }
 
-    init()
+    this.init()
   }
 
   /**
@@ -112,7 +115,7 @@ const VanillaJsChat = () => {
    * @param {string} color - string contains background color [red, blue, yellow or green]
    * @param {string} side - string contains message side [right or left]
    */
-  const addMessage = (name, message, color, side) => {
+  addMessage (name, message, color, side) {
     if(!name || !name.length > 0 || !message || !message.length > 0) {
       return throwWrapperMessageError()
     }
@@ -133,36 +136,28 @@ const VanillaJsChat = () => {
     })
 
     const messageInstance = DomHandler.renderElement(messageVdom)
-    DomHandler.insertMessage(chatInstances.body, messageInstance)
+    DomHandler.insertMessage(this.chatInstances.body, messageInstance)
 
-    scrollChatToBottom()
+    this.scrollChatToBottom()
   }
 
-  const onSendMessage = callback => {
+  onSendMessage (callback) {
     if(!callback || typeof callback !== 'function') {
       return throwOnSendMessageCallbackError()
     }
 
-    onSendMessageCallbacks.push(callback)
+    this.onSendMessageCallbacks.push(callback)
   }
 
   /**
    * Method to close chat and remove instances
    */
-  const close = () => {
-    if(isInstance()) {
-      removeHtmlElements()
-      destroyInstances()
+  close() {
+    if(this.isInstance()) {
+      this.removeHtmlElements()
+      this.destroyInstances()
     }
-  }
-
-  return {
-    init,
-    restart,
-    addMessage,
-    onSendMessage,
-    close,
   }
 }
 
- module.exports = new VanillaJsChat()
+module.exports = new VanillaJsChatCore()
