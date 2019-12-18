@@ -1,4 +1,4 @@
-import DomCore from './dom-core'
+import DomCore from './../dom-core'
 
 const DomHandler = () => {
 
