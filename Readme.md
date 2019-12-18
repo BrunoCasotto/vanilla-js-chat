@@ -1,6 +1,6 @@
 # vanilla-js-chat
 
-Um projeto com desenvolvido em javascript puro que introduz em uma página web uma interface de chat, sem dependências ou lógicas de mensageria.
+Um projeto desenvolvido em javascript puro que introduz em uma página web uma interface de chat, sem dependências ou lógicas de envio de mensagens.
 
 <img width="350" alt="" src="https://github.com/BrunoCasotto/vanilla-js-chat/blob/master/docs/chat_image.png">
 
@@ -26,12 +26,25 @@ import VanillaJsChat from 'vanilla-js-chat'
 VanillaJsChat.init()
 ```
 
+No arquivo html voce deve adicionar uma div com o id especificado
+
+```
+  <div id="vanilla-js-chat"></div>
+```
+
+Caso deseje outro id, especifique no momento de iniciar o projeto
+
+```
+<div id="my-project-chat"></div>
+VanillaJsChat.init('my-project-chat')
+```
+
 ## Enviar mensagem
 Os parâmetros que o metodo `addMessage` recebem são:
 
 `name` - Nome do usuário que envia a mensagem
 
-`message` - A mensagem de texto que deverá ser exibida non chat
+`message` - A mensagem de texto que deverá ser exibida no chat
 
 `color` - A cor de fundo da mensagem no chat [green, blue, yellow, red]
 
@@ -40,15 +53,15 @@ Os parâmetros que o metodo `addMessage` recebem são:
 ```VanillaJsChat.addMessage('John Doe', 'I`m baba yaga', 'red', 'right')```
 
 ## Capturando mensagens enviadas pelo usuario
-O método `onSendMessage` recebe uma callback como parametro, toda vez que o usuário enviar uma mensagem essa callback será chamada. Podem ser inseridas quantas callbacks forem necessárias.
+O método `onSendMessage` recebe uma callback como parâmetro, toda vez que o usuário enviar uma mensagem essa callback será chamada. Podem ser inseridas quantas callbacks forem necessárias.
 ```
   const storageMessage = ({ message }) => {
     database.save(message)
   }
-  
+
   const replyMessage = ({ message }) => {
     const responseMessage = handleMessage(message)
-    
+
     VanillaJsChat.addMessage('John Doe', responseMessage, 'red', 'right')
   }
 
@@ -56,7 +69,7 @@ O método `onSendMessage` recebe uma callback como parametro, toda vez que o usu
   VanillaJsChat.onSendMessage(replyMessage) // second callback
 ````
 
-## Fechar o chat e remover a instancia
+## Fechar o chat e remover a instância
 ```VanillaJsChat.close()```
 
 ## Reiniciar o chat
