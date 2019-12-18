@@ -16,7 +16,7 @@ const DomCore = () => {
   /**
    * method to add the attributes to element
    */
-  const addEventAndAttributes = (element, props) => {
+  const addAttAndTextOnElement = (element, props) => {
     const attributes = getAttributesFromProps(props)
 
     attributes.forEach(setAttribute(props, element))
@@ -34,13 +34,16 @@ const DomCore = () => {
 
     const element = document.createElement(type)
 
-    if(props) addEventAndAttributes(element, props)
+    if(props) addAttAndTextOnElement(element, props)
 
     return element
   }
 
   return {
     createElement,
+    getAttributesFromProps,
+    setAttribute,
+    addAttAndTextOnElement,
   }
 }
 
