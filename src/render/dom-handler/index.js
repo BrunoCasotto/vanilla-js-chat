@@ -34,6 +34,7 @@ const DomHandler = () => {
 
   const insertMessage = (bodyElement, messageElement) => {
     bodyElement.insertBefore(messageElement, null)
+    return bodyElement
   }
 
   return {
