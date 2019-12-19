@@ -30,6 +30,8 @@ const DomHandler = () => {
     chat.appendChild(controller)
 
     wrapper.appendChild(chat)
+
+    return wrapper
   }
 
   const insertMessage = (bodyElement, messageElement) => {

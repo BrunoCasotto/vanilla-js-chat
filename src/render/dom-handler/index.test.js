@@ -49,4 +49,25 @@ describe('Dom Handler', () => {
     expect(elementWithMessage.children.length).toBe(1)
   })
 
+  test('render should append chat html in correct sequence', () => {
+    const wrapper = document.createElement('div')
+    const chat = document.createElement('div')
+    const header = document.createElement('div')
+    const body = document.createElement('div')
+    const controller = document.createElement('div')
+
+    wrapper.setAttribute('id', 'wrapper'),
+    chat.setAttribute('id', 'chat'),
+    header.setAttribute('id', 'header'),
+    body.setAttribute('id', 'body'),
+    controller.setAttribute('id', 'controller')
+
+    const rendererWrapper = DomHandler.render({ wrapper, chat, header, body, controller })
+    expect(rendererWrapper.getAttribute('wrapper'))
+    expect(rendererWrapper.children[0].getAttribute('chat'))
+    expect(rendererWrapper.children[0].children[0].getAttribute('header'))
+    expect(rendererWrapper.children[0].children[0].getAttribute('body'))
+    expect(rendererWrapper.children[0].children[0].getAttribute('controller'))
+  })
+
 })
