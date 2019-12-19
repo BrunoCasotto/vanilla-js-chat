@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.com/BrunoCasotto/vanilla-js-chat.svg?branch=master)](https://travis-ci.com/BrunoCasotto/vanilla-js-chat)
+
 # vanilla-js-chat
 
 Um projeto desenvolvido em javascript puro que introduz em uma página web uma interface de chat, sem dependências ou lógicas de envio de mensagens.
