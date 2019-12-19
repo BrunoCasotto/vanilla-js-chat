@@ -4,14 +4,16 @@ node_js:
 branches:
   only:
   - master
-# cache:
-#   directories:
-#     - node_modules
+jobs:
+  include:
+    - stage: test
+      script: npm run test
 # deploy:
 #   github_token: $GITHUB_TOKEN
-#   on:
+#   on:/
 #     branch: master
 # install:
 #   - npm install
 # script:
 #   - npm run test
+
