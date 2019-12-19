@@ -1,8 +1,9 @@
-# vanilla-js-chat
+<h1 align="center"> vanilla-js-chat</h1>
 
-[![Build Status](https://travis-ci.com/BrunoCasotto/vanilla-js-chat.svg?branch=master)](https://travis-ci.com/BrunoCasotto/vanilla-js-chat)
-<a href="https://www.npmjs.com/package/vanilla-js-chat"><img src="https://img.shields.io/npm/v/vanilla-js-chat" alt="Version"></a>
-<a href="https://www.npmjs.com/package/vanilla-js-chat"><img src="https://img.shields.io/npm/l/vanilla-js-chat.svg" alt="License"></a>
+<p align="center">
+  <a href="https://travis-ci.com/BrunoCasotto/vanilla-js-chat"><img src="https://travis-ci.com/BrunoCasotto/vanilla-js-chat.svg?branch=master" alt="Build Status"></a>
+  <a href="https://www.npmjs.com/package/vanilla-js-chat"><img src="https://img.shields.io/npm/v/vanilla-js-chat" alt="Version"></a>
+  <a href="https://www.npmjs.com/package/vanilla-js-chat"><img src="https://img.shields.io/npm/l/vanilla-js-chat.svg" alt="License"></a></p>
 
 Um projeto desenvolvido em javascript puro que introduz em uma página web uma interface de chat, sem dependências ou lógicas de envio de mensagens.
 
