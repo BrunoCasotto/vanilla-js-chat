@@ -51,6 +51,14 @@
     "webpack-dev-server": "^3.9.0"
   },
   "jest": {
-    "coverageDirectory": "./coverage/"
+    "coverageDirectory": "./coverage/",
+    "collectCoverageFrom": [
+      "**/*.{js,jsx}",
+      "!**/*.config.js",
+      "!**/node_modules/**",
+      "!**/webpack/**",
+      "!**/coverage/**",
+      "!**/dist/**"
+    ]
   }
 }
