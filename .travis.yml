@@ -9,8 +9,6 @@ install:
 jobs:
   include:
     - stage: test
-      script: npm run test:coverage
-    - stage: coverage
-      script: - codecov
+      script: npm run test:coverage && codecov
     - stage: build
       script: npm run build
