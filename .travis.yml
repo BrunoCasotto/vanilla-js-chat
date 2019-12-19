@@ -8,12 +8,5 @@ jobs:
   include:
     - stage: test
       script: npm run test
-# deploy:
-#   github_token: $GITHUB_TOKEN
-#   on:/
-#     branch: master
-# install:
-#   - npm install
-# script:
-#   - npm run test
-
+    - stage: build
+      script: npm run build
