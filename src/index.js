@@ -23,11 +23,10 @@ class VanillaJsChatCore {
       controller: null,
       wrapper: null
     }
-    this.onSendMessageCallbacks = []
 
+    this.onSendMessageCallbacks = []
   }
 
-  //Private
   destroyInstances () {
     this.chatInstances.chat = null
     this.chatInstances.header = null
@@ -36,31 +35,27 @@ class VanillaJsChatCore {
     this.chatInstances.wrapper = null
   }
 
-  isInstance() {
+  hasInstance() {
     return !!this.chatInstances.chat
   }
 
-  //Private
   removeHtmlElements () {
     this.chatInstances.wrapper.removeChild(
       this.chatInstances.wrapper.firstChild
     )
   }
 
-  //Private
   executeSendMessageCallbacks (message) {
     if(message.length > 0) {
       this.onSendMessageCallbacks.forEach(callback => callback({ message }))
     }
   }
 
-  //Private
   scrollChatToBottom () {
     const { scrollHeight } = this.chatInstances.body
     this.chatInstances.body.scrollTop = scrollHeight
   }
 
-  //Private
   addMessageEventListener (buttonElement, inputElement) {
     buttonElement.addEventListener('click', () => {
       this.executeSendMessageCallbacks(inputElement.value)
@@ -101,7 +96,7 @@ class VanillaJsChatCore {
   }
 
   restart () {
-    if(this.isInstance()) {
+    if(this.hasInstance()) {
       this.close()
     }
 
@@ -153,7 +148,7 @@ class VanillaJsChatCore {
    * Method to close chat and remove instances
    */
   close() {
-    if(this.isInstance()) {
+    if(this.hasInstance()) {
       this.removeHtmlElements()
       this.destroyInstances()
     }
