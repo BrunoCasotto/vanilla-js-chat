@@ -44,7 +44,7 @@
     "identity-obj-proxy": "^3.0.0",
     "jest": "^24.9.0",
     "mini-css-extract-plugin": "^0.8.0",
-    "node-sass": "^4.13.0",
+    "node-sass": "^7.0.0",
     "postcss-loader": "^3.0.0",
     "sass-loader": "^8.0.0",
     "webpack": "^4.41.2",
