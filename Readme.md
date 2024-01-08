@@ -6,24 +6,24 @@
   <a href="https://www.npmjs.com/package/vanilla-js-chat"><img src="https://img.shields.io/npm/l/vanilla-js-chat.svg" alt="License"></a>
   <a href="https://codecov.io/gh/BrunoCasotto/vanilla-js-chat"><img src="https://codecov.io/gh/BrunoCasotto/vanilla-js-chat/branch/master/graph/badge.svg" alt="CodeCov"></a></p>
 
-Um projeto desenvolvido em javascript puro que introduz em uma página web uma interface de chat, sem dependências ou lógicas de envio de mensagens.
+A project developed in vanilla JavaScript that introduces a chat interface to a web page, without dependencies or message sending logic.
 
 <img width="350" alt="" src="https://github.com/BrunoCasotto/vanilla-js-chat/blob/master/docs/chat_image.png">
 
 
-## Implementando o chat
-Instalação:
+## Getting start
+Install:
 
 ``` npm i --save vanilla-js-chat ```
 
-OU
+OR
 
 ```
 <link href="https://unpkg.com/vanilla-js-chat@latest/dist/vanillaJsChat.css" rel="stylesheet" >
 <script src="https://unpkg.com/browse/vanilla-js-chat@latest/dist/vanillaJsChat.min.js" />
 ```
 
-Implementação básica do projeto.
+Basic install
 
 ```
 import 'vanilla-js-chat/dist/vanillaJsChat.css'
@@ -32,34 +32,36 @@ import VanillaJsChat from 'vanilla-js-chat'
 VanillaJsChat.init()
 ```
 
-No arquivo html voce deve adicionar uma div com o id especificado
+In the current html you should add a div with especific ID
 
 ```
   <div id="vanilla-js-chat"></div>
 ```
 
-Caso deseje outro id, especifique no momento de iniciar o projeto
+If you want another id you should pass into a init funcion the custom ID created
 
 ```
 <div id="my-project-chat"></div>
 VanillaJsChat.init('my-project-chat')
 ```
 
-## Enviar mensagem
-Os parâmetros que o metodo `addMessage` recebem são:
+## Send message
 
-`name` - Nome do usuário que envia a mensagem
+### ```addMessage``` method params
 
-`message` - A mensagem de texto que deverá ser exibida no chat
+`name` - Sender name
 
-`color` - A cor de fundo da mensagem no chat [green, blue, yellow, red]
+`message` - Content message
 
-`side` - O lado que a mensagem sera alinhada [right, left]
+`color` - The background color [green, blue, yellow, red]
+
+`side` - The side wich the message will be aligned [right, left]
 
 ```VanillaJsChat.addMessage('John Doe', 'I`m baba yaga', 'red', 'right')```
 
-## Capturando mensagens enviadas pelo usuario
-O método `onSendMessage` recebe uma callback como parâmetro, toda vez que o usuário enviar uma mensagem essa callback será chamada. Podem ser inseridas quantas callbacks forem necessárias.
+## Get user message
+The method `onSendMessage` receives a callback as parameter, every message send by a user this callback is called. As many callbacks as needed can be inserted.
+
 ```
   const storageMessage = ({ message }) => {
     database.save(message)
@@ -75,8 +77,8 @@ O método `onSendMessage` recebe uma callback como parâmetro, toda vez que o us
   VanillaJsChat.onSendMessage(replyMessage) // second callback
 ````
 
-## Fechar o chat e remover a instância
+## Close and remove instance
 ```VanillaJsChat.close()```
 
-## Reiniciar o chat
+## Restart chat
 ```VanillaJsChat.restart()```
